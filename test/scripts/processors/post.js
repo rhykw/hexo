@@ -1,6 +1,7 @@
 'use strict';
-
-var should = require('chai').should(); // eslint-disable-line
+var chai = require('chai');
+chai.use(require('chai-datetime'));
+var should = chai.should(); // eslint-disable-line
 var pathFn = require('path');
 var fs = require('hexo-fs');
 var Promise = require('bluebird');
@@ -502,8 +503,8 @@ describe('post', function() {
     }).spread(function(stats) {
       var post = Post.findOne({source: file.path});
 
-      post.date.toDate().should.eql(stats.ctime);
-      post.updated.toDate().should.eql(stats.mtime);
+      post.date.toDate().should.equalDate(stats.ctime);
+      post.updated.toDate().should.equalDate(stats.mtime);
 
       return Promise.all([
         post.remove(),
@@ -844,8 +845,8 @@ describe('post', function() {
     }).spread(function(stats) {
       var post = Post.findOne({source: file.path});
 
-      post.date.toDate().should.eql(stats.ctime);
-      post.updated.toDate().should.eql(stats.mtime);
+      post.date.toDate().should.equalDate(stats.ctime);
+      post.updated.toDate().should.equalDate(stats.mtime);
 
       return Promise.all([
         post.remove(),
