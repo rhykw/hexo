@@ -1,4 +1,5 @@
 'use strict';
+
 var chai = require('chai');
 chai.use(require('chai-datetime'));
 var should = chai.should(); // eslint-disable-line
