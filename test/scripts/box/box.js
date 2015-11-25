@@ -469,7 +469,7 @@ describe('Box', function() {
               break;
 
             default:
-              return reject(new Error('Type should be either create or delete'));
+              return reject(new Error('Type should be either create or delete. type='+file.type));
           }
 
           if (processor.calledTwice) {
