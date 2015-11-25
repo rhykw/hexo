@@ -504,8 +504,8 @@ describe('post', function() {
     }).spread(function(stats) {
       var post = Post.findOne({source: file.path});
 
-      post.date.toDate().should.equalDate(stats.ctime);
-      post.updated.toDate().should.equalDate(stats.mtime);
+      post.date.toDate().should.equalTime(stats.ctime);
+      post.updated.toDate().should.equalTime(stats.mtime);
 
       return Promise.all([
         post.remove(),
@@ -846,8 +846,8 @@ describe('post', function() {
     }).spread(function(stats) {
       var post = Post.findOne({source: file.path});
 
-      post.date.toDate().should.equalDate(stats.ctime);
-      post.updated.toDate().should.equalDate(stats.mtime);
+      post.date.toDate().should.equalTime(stats.ctime);
+      post.updated.toDate().should.equalTime(stats.mtime);
 
       return Promise.all([
         post.remove(),
